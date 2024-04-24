@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import connectToMongoDB from "./db/connectToMongoDb.js";
 import authRoutes from "./routes/auth.routes.js";
+import crudRoutes from "./routes/crud.routes.js";
 import cookieParser from "cookie-parser";
 import multer from 'multer'
 
@@ -19,6 +20,7 @@ app.use(form.array())
 // app.use(bodyParser.);
 app.use(bodyParser.json());
 app.use("/api/auth", authRoutes);
+app.use("/", crudRoutes)
 
 app.listen(PORT, () => {
 	connectToMongoDB();
